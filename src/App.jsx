@@ -74,48 +74,48 @@ function App() {
         <p className="text-center mt-4 text-red-500">{error}</p>
       ) : (
         <MapContainer
-          center={[20, 0]}
-          zoom={2}
-          style={{ height: "100%", width: "100%" }}
+  center={[20, 0]}
+  zoom={2}
+  style={{ height: "calc(100vh - 120px)", width: "100%" }}
+>
+  <TileLayer
+    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    attribution="&copy; OpenStreetMap contributors"
+  />
+  {earthquakes
+    .filter((eq) => eq.properties.mag >= minMag)
+    .map((eq) => {
+      const [lon, lat, depth] = eq.geometry.coordinates
+      const mag = eq.properties.mag
+      return (
+        <CircleMarker
+          key={eq.id}
+          center={[lat, lon]}
+          radius={4 + mag * 2}
+          color={getColor(depth)}
+          fillOpacity={0.7}
         >
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution="&copy; OpenStreetMap contributors"
-          />
-          {earthquakes
-            .filter((eq) => eq.properties.mag >= minMag)
-            .map((eq) => {
-              const [lon, lat, depth] = eq.geometry.coordinates
-              const mag = eq.properties.mag
-              return (
-                <CircleMarker
-                  key={eq.id}
-                  center={[lat, lon]}
-                  radius={4 + mag * 2}
-                  color={getColor(depth)}
-                  fillOpacity={0.7}
-                >
-                  <Popup>
-                    <strong>{eq.properties.place}</strong>
-                    <br />
-                    Magnitude: {mag}
-                    <br />
-                    Depth: {depth} km
-                    <br />
-                    Time: {new Date(eq.properties.time).toLocaleString()}
-                    <br />
-                    <a
-                      href={eq.properties.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      View on USGS
-                    </a>
-                  </Popup>
-                </CircleMarker>
-              )
-            })}
-        </MapContainer>
+          <Popup>
+            <strong>{eq.properties.place}</strong>
+            <br />
+            Magnitude: {mag}
+            <br />
+            Depth: {depth} km
+            <br />
+            Time: {new Date(eq.properties.time).toLocaleString()}
+            <br />
+            <a
+              href={eq.properties.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View on USGS
+            </a>
+          </Popup>
+        </CircleMarker>
+      )
+    })}
+</MapContainer>
       )}
     </div>
   )
