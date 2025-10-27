@@ -1,15 +1,31 @@
+html,
+body,
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #0b0c10;
+  color: #ffffff;
 }
 
+/* Root container */
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Header/logo styling */
 .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
-  transition: filter 300ms;
+  transition: filter 300ms ease-in-out;
 }
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
@@ -18,6 +34,7 @@
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
+/* Logo rotation animation */
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -26,22 +43,45 @@
     transform: rotate(360deg);
   }
 }
-
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
 }
 
+/* Card / content section */
 .card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-.leaflet-container {
-  height: 100vh;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5em;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+  margin-bottom: 1rem;
+  max-width: 800px;
   width: 100%;
+}
+
+/* Map (Leaflet) container */
+.leaflet-container {
+  height: calc(100vh - 160px);
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(100, 108, 255, 0.4);
+}
+
+/* Subtle footer or info text */
+.read-the-docs {
+  color: #aaa;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+  .card {
+    padding: 1em;
+  }
+  .leaflet-container {
+    height: calc(100vh - 120px);
+  }
 }
