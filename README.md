@@ -31,25 +31,20 @@ This application fetches live earthquake data from the USGS API and plots it on 
 3. Start the development server
    ```bash
    npm run dev
-
 Now open [http://localhost:5173](http://localhost:5173) in your browser.
-3. Build for production
+
+4. Build for production
    ```bash
    npm run build
 
-## Folder Structure
+## Future Enhancements
+🚧 Add magnitude filters (low, moderate, strong)
 
-earthquake-visualizer/
-├── src/
-│   ├── App.jsx
-│   ├── App.css
-│   ├── main.jsx
-│   ├── index.css
-│   └── assets/
-├── public/
-├── package.json
-├── vite.config.js
-└── README.md
+🌙 Implement light/dark map themes
+
+📊 Add magnitude distribution charts using Recharts or Chart.js
+
+🔍 Add location-based search and filtering
 
 ## Developed By
 Venkatesh Choppadhandi
