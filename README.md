@@ -51,3 +51,7 @@ earthquake-visualizer/
 ├── vite.config.js
 └── README.md
 
+## Developed By
+Venkatesh Choppadhandi
+🎓 B. Tech – Computer Science | B V Raju Institute of Technology
+📧 [21211a0563@bvrit.ac.in](21211a0563@bvrit.ac.in)
